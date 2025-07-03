@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://penty-portfolio.vercel.app";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://penty-portfolio.com";
 
   return [
     {
@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    
     {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
@@ -47,5 +48,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.5,
     },
+    
   ];
 }
