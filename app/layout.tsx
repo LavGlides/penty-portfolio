@@ -9,7 +9,11 @@ import { ClientOnly } from "@/components/client-only";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Penty Joseph - Professional Trainer & Consultant",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://penty-portfolio.vercel.app'),
+  title: {
+    default: "Penty Joseph - Professional Trainer & Consultant",
+    template: "%s | Penty Joseph Portfolio"
+  },
   description:
     "Expert training, consultancy, and professional development services in AWS, Cloud, and DevOps.",
   keywords: [
