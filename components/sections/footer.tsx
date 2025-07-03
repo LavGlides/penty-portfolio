@@ -2,61 +2,52 @@
 import Link from "next/link";
 
 import { navItems, socialLinks } from "@/lib/data";
+import { Button } from "../ui/button";
 
 const Footer = () => {
   return (
-    <footer className="bg-muted text-muted-foreground py-12">
+    <footer className="py-12 bg-slate-900 text-white">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-lg font-semibold text-foreground">
-              Penty Joseph
-            </h3>
-            <p className="mt-2 text-sm">
-              AWS Cloud Trainer & Consultant. Helping individuals and businesses
-              harness the power of the cloud.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-foreground">
-              Quick Links
-            </h3>
-            <ul className="mt-4 space-y-2">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-sm hover:text-primary transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-foreground">
-              Connect With Me
-            </h3>
-            <div className="flex mt-4 space-x-4">
-              {socialLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`text-muted-foreground ${link.color} transition-colors`}
-                >
-                  <link.icon className="w-6 h-6" />
-                </Link>
-              ))}
+        <div className="text-center space-y-6">
+          <div className="flex justify-center items-center space-x-4">
+            <h3 className="text-2xl font-bold gradient-text">Penty Joseph</h3>
+            <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-3 py-1">
+              <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                <span className="text-slate-900 font-bold text-xs">AT</span>
+              </div>
+              <span className="text-sm">AmaliTech</span>
             </div>
           </div>
-        </div>
-        <div className="mt-8 pt-8 border-t border-muted-foreground/10 text-center text-sm">
-          <p>
-            &copy; {new Date().getFullYear()} Penty Joseph. All rights reserved.
+          <p className="text-slate-300 max-w-2xl mx-auto">
+            AWS Certified Solutions Architect specializing in cloud training,
+            DevOps automation, and scalable cloud solutions.
           </p>
+          <div className="flex justify-center space-x-4">
+            {socialLinks.map((social) => (
+              <Button
+                key={social.label}
+                variant="ghost"
+                size="icon"
+                asChild
+                className={`transition-colors duration-200 ${social.color}`}
+              >
+                <Link
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </Link>
+              </Button>
+            ))}
+          </div>
+          <div className="border-t border-slate-700 pt-6">
+            <p className="text-slate-400 text-sm">
+              © 2024 Penty Joseph. All rights reserved. | AWS Cloud Trainer &
+              Solutions Architect
+            </p>
+          </div>
         </div>
       </div>
     </footer>

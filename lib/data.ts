@@ -1,17 +1,10 @@
-"use client";
 import type React from "react";
 import {
   Award,
   BookOpen,
   Briefcase,
-  Building,
-  Calendar,
-  CheckCircle,
   Clock,
   Code,
-  CreditCard,
-  ExternalLink,
-  Eye,
   Github,
   Home,
   Lightbulb,
@@ -20,12 +13,6 @@ import {
   MapPin,
   MessageSquare,
   Phone,
-  Play,
-  Quote,
-  Search,
-  Send,
-  Star,
-  Tag,
   Target,
   User,
   Users,
@@ -48,11 +35,6 @@ export const navItems: NavItem[] = [
   { href: "#testimonials", label: "Testimonials", icon: MessageSquare },
   { href: "#contact", label: "Contact", icon: Phone },
   { href: "#blog", label: "Blog", icon: BookOpen },
-];
-
-export const adminNavItems: NavItem[] = [
-  ...navItems,
-  { href: "/admin", label: "Admin", icon: User, external: true },
 ];
 
 export const socialLinks = [
@@ -173,7 +155,7 @@ export const services = [
       "Project-based Learning",
       "Industry Best Practices",
     ],
-    price: "From GHC5,00/session",
+    price: "From GHC5,000/session",
   },
 ];
 
@@ -269,13 +251,27 @@ export const awsProjects = [
 export const certificates = [
   {
     id: 1,
+    title: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services (AWS)",
+    date: "2024",
+    category: "Cloud Fundamentals",
+    description:
+      "Foundational certification validating overall understanding of AWS Cloud services and concepts.",
+    image: "/cloud_practitioner_badge.png",
+    credentialId: "f4d678f3dffe4655942e205e4a8474bd",
+    verificationUrl:
+      "https://www.credly.com/badges/f4d678f3dffe4655942e205e4a8474bd",
+    skills: ["AWS Services", "Cloud Computing", "Cost Management"],
+  },
+  {
+    id: 2,
     title: "AWS Certified Solutions Architect",
     issuer: "Amazon Web Services (AWS)",
     date: "2024",
     category: "Cloud Architecture",
     description:
       "Professional-level certification demonstrating expertise in designing distributed systems on AWS.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/badges_Solutions_Architect_Associate.png",
     credentialId: "479d0d0f31684e1a9673aed218bd130c",
     verificationUrl:
       "https://www.credly.com/badges/479d0d0f31684e1a9673aed218bd130c",
@@ -286,20 +282,6 @@ export const certificates = [
     ],
   },
   {
-    id: 2,
-    title: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services (AWS)",
-    date: "2024",
-    category: "Cloud Fundamentals",
-    description:
-      "Foundational certification validating overall understanding of AWS Cloud services and concepts.",
-    image: "/placeholder.svg?height=300&width=400",
-    credentialId: "f4d678f3dffe4655942e205e4a8474bd",
-    verificationUrl:
-      "https://www.credly.com/badges/f4d678f3dffe4655942e205e4a8474bd",
-    skills: ["AWS Services", "Cloud Computing", "Cost Management"],
-  },
-  {
     id: 3,
     title: "AWS Cloud Support Associate",
     issuer: "Amazon Web Services (AWS)",
@@ -307,7 +289,7 @@ export const certificates = [
     category: "Cloud Support",
     description:
       "Certification demonstrating skills in AWS cloud support and troubleshooting.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/amazon_web_services_logo.jpg",
     credentialId: "XXYCXG31WFRQ",
     verificationUrl: "https://aws.amazon.com/verification",
     skills: ["Technical Support", "Linux", "Bash"],
@@ -320,7 +302,7 @@ export const certificates = [
     category: "Cloud Consulting",
     description:
       "Specialized certification in AWS cloud technology consulting and implementation.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/amazon_web_services_logo.jpg",
     credentialId: "XBLEA5E2KF3O",
     verificationUrl: "https://aws.amazon.com/verification",
     skills: ["Consulting", "Git", "Linux"],
@@ -333,7 +315,7 @@ export const certificates = [
     category: "Cloud Career Development",
     description:
       "Completion of AWS re/Start program for cloud career development and technical skills.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/amazon_web_services_logo.jpg",
     credentialId: "AWS-RESTART-2024",
     verificationUrl: "https://aws.amazon.com/training/restart/",
     skills: ["Git", "Cloud Fundamentals", "Career Development"],
@@ -346,7 +328,7 @@ export const certificates = [
     category: "Cloud Computing",
     description:
       "Comprehensive cloud computing program covering AWS services and cloud architecture.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/alx.jpg",
     credentialId: "ALX-CLOUD-2024",
     verificationUrl: "https://www.alxafrica.com/programme/cloud-computing/",
     skills: ["Cloud Computing", "AWS", "DevOps"],
@@ -422,16 +404,7 @@ export const githubRepos = [
     forks: 52,
     url: "https://github.com/penty-joseph/aws-devops-pipeline",
   },
-  {
-    id: 4,
-    name: "serverless-microservices",
-    description:
-      "Microservices architecture using AWS Lambda, API Gateway, and DynamoDB.",
-    language: "JavaScript",
-    stars: 298,
-    forks: 89,
-    url: "https://github.com/penty-joseph/serverless-microservices",
-  },
+  
 ];
 
 // Testimonials data with AmaliTech branding
@@ -632,38 +605,5 @@ export const blogPosts = [
     readTime: "10 min read",
     tags: ["CloudFormation", "IaC", "DevOps"],
     mediumUrl: "https://medium.com/@penty-joseph/cloudformation-best-practices",
-  },
-  {
-    id: 4,
-    title: "Securing Your AWS Environment: IAM, VPC, and Security Groups",
-    excerpt:
-      "Essential security practices for AWS environments, covering Identity and Access Management, Virtual Private Clouds, and network security.",
-    image: "/placeholder.svg?height=300&width=500",
-    publishedAt: "2024-11-05",
-    readTime: "8 min read",
-    tags: ["AWS Security", "IAM", "VPC"],
-    mediumUrl: "https://medium.com/@penty-joseph/aws-security-essentials",
-  },
-  {
-    id: 5,
-    title: "CI/CD Pipelines with AWS CodePipeline and CodeBuild",
-    excerpt:
-      "Step-by-step guide to setting up continuous integration and deployment pipelines using AWS native DevOps services.",
-    image: "/placeholder.svg?height=300&width=500",
-    publishedAt: "2024-10-22",
-    readTime: "14 min read",
-    tags: ["CI/CD", "CodePipeline", "DevOps"],
-    mediumUrl: "https://medium.com/@penty-joseph/aws-cicd-pipeline",
-  },
-  {
-    id: 6,
-    title: "Cost Optimization Strategies for AWS Cloud Infrastructure",
-    excerpt:
-      "Practical techniques for reducing AWS costs while maintaining performance, including reserved instances, spot instances, and resource optimization.",
-    image: "/placeholder.svg?height=300&width=500",
-    publishedAt: "2024-10-08",
-    readTime: "11 min read",
-    tags: ["Cost Optimization", "AWS", "Cloud Economics"],
-    mediumUrl: "https://medium.com/@penty-joseph/aws-cost-optimization",
   },
 ];

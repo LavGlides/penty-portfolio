@@ -1,79 +1,118 @@
 "use client";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { Award, ExternalLink } from "lucide-react";
-
-import { certificates } from "@/lib/data";
-import { Badge } from "@/components/ui/badge";
+import { Award, Calendar, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { certificates } from "@/lib/data";
 
-const CertificatesSection = () => {
+const Certificates = () => {
   return (
-    <section id="certificates" className="py-24 sm:py-32">
+    <section id="certificates" className="pt-24 pb-20">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold tracking-tight">My Certificates</h2>
-          <p className="text-muted-foreground mt-2">
-            A collection of my professional certifications and credentials.
+          <div className="flex justify-center mb-6">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+              <Award className="w-8 h-8 text-primary" />
+            </div>
+          </div>
+          <h2 className="text-4xl lg:text-6xl font-bold mb-6">
+            Professional <span className="gradient-text">Certificates</span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            AWS certifications and credentials demonstrating expertise in cloud
+            architecture, security, and best practices.
           </p>
         </motion.div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {certificates.map((certificate, index) => (
+          {certificates.map((cert, index) => (
             <motion.div
-              key={certificate.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              key={cert.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
-              <Card className="h-full flex flex-col">
-                <CardHeader>
-                  <div className="relative h-48 w-full mb-4">
-                    <Image
-                      src={certificate.image}
-                      alt={certificate.title}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-t-lg"
-                    />
+              <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={cert.image || "/placeholder.svg"}
+                    alt={cert.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <Badge className="bg-primary/90 text-primary-foreground">
+                      {cert.category}
+                    </Badge>
                   </div>
-                  <CardTitle className="flex items-center gap-2">
-                    <Award className="w-6 h-6 text-primary" />
-                    {certificate.title}
+                </div>
+
+                <CardHeader>
+                  <CardTitle className="text-lg leading-tight">
+                    {cert.title}
                   </CardTitle>
+                  <div className="flex items-center text-sm text-muted-foreground space-x-4">
+                    <span className="font-medium">{cert.issuer}</span>
+                    <div className="flex items-center space-x-1">
+                      <Calendar className="w-4 h-4" />
+                      <span>{cert.date}</span>
+                    </div>
+                  </div>
                 </CardHeader>
-                <CardContent className="flex-grow">
-                  <p className="text-muted-foreground mb-4">
-                    {certificate.description}
+
+                <CardContent className="space-y-4">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {cert.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    {certificate.skills.map((skill) => (
-                      <Badge key={skill} variant="secondary">
-                        {skill}
-                      </Badge>
-                    ))}
+
+                  <div className="space-y-2">
+                    <p className="text-xs font-medium text-muted-foreground">
+                      Key Skills:
+                    </p>
+                    <div className="flex flex-wrap gap-1">
+                      {cert.skills.map((skill) => (
+                        <Badge
+                          key={skill}
+                          variant="outline"
+                          className="text-xs"
+                        >
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t">
+                    <p className="text-xs text-muted-foreground mb-3">
+                      Credential ID:{" "}
+                      <span className="font-mono">{cert.credentialId}</span>
+                    </p>
+                    <Button
+                      size="sm"
+                      asChild
+                      className="w-full bg-transparent"
+                      variant="outline"
+                    >
+                      <a
+                        href={cert.verificationUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Verify Certificate
+                      </a>
+                    </Button>
                   </div>
                 </CardContent>
-                <CardFooter>
-                  <Button asChild variant="outline" className="w-full">
-                    <Link href={certificate.verificationUrl} target="_blank">
-                      Verify Certificate{" "}
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </Link>
-                  </Button>
-                </CardFooter>
               </Card>
             </motion.div>
           ))}
@@ -83,4 +122,4 @@ const CertificatesSection = () => {
   );
 };
 
-export default CertificatesSection;
+export default Certificates;
